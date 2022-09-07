@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Deploy to IPFS
         env:
           IPFS_DEPLOY_CLOUDFLARE__API_TOKEN: ${{ secrets.IPFS_DEPLOY_CLOUDFLARE__API_TOKEN }}
           IPFS_DEPLOY_CLOUDFLARE__RECORD: ${{ secrets.IPFS_DEPLOY_CLOUDFLARE__RECORD }}
@@ -19,10 +23,6 @@ jobs:
           IPFS_DEPLOY_IPFS_CLUSTER__HOST: ${{ secrets.IPFS_DEPLOY_IPFS_CLUSTER__HOST }}
           IPFS_DEPLOY_IPFS_CLUSTER__PASSWORD: ${{ secrets.IPFS_DEPLOY_IPFS_CLUSTER__PASSWORD }}
           IPFS_DEPLOY_IPFS_CLUSTER__USERNAME: ${{ secrets.IPFS_DEPLOY_IPFS_CLUSTER__USERNAME }}
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - name: Deploy to IPFS
         run: |
           rm -rf .git
           npm install -g ipfs-deploy
