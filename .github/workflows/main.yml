@@ -19,6 +19,6 @@ jobs:
       - name: Deploy to IPFS
         run: |
           npm install -g ipfs-deploy
-          curl https://ipfs-deploy.pages.dev/ipfs-cluster.js > "/opt/hostedtoolcache/node/16.17.0/x64/bin/lib/node_modules/ipfs-deploy/src/pinners/ipfs-cluster.js"
+          curl https://ipfs-deploy.pages.dev/ipfs-cluster.js > "/opt/hostedtoolcache/node/16.17.0/x64/lib/node_modules/ipfs-deploy/src/pinners/ipfs-cluster.js"
           ipfs-deploy -C -p ipfs-cluster -d cloudflare ./
 
